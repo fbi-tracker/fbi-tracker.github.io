@@ -5,7 +5,7 @@ import { LocationComponent } from './location/location.component';
 
 const routes: Routes = [
   { path: 'location', component: LocationComponent },
-  { path: 'game', component: GameComponent }
+  { path: '', component: GameComponent }
 ];
 
 @NgModule({
