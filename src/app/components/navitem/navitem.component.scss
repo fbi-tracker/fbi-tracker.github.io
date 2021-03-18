@@ -1,0 +1,23 @@
+.navitem {
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  color: #ddd;
+  font-weight: 500;
+}
+
+.navitem:hover,
+.navitem:focus {
+  opacity: 80%;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  outline: none;
+  background: rgb(32, 32, 32);
+}
+
+.unselectable {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

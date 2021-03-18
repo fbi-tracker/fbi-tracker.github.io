@@ -1,3 +1,5 @@
+import { NavitemComponent } from './components/navitem/navitem.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -10,7 +12,9 @@ import { GameComponent } from './game/game.component';
   declarations: [
     AppComponent,
     LocationComponent,
-    GameComponent
+    GameComponent,
+    NavbarComponent,
+    NavitemComponent
   ],
   imports: [
     BrowserModule,

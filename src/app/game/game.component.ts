@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { $ } from 'protractor';
 
 @Component({
   selector: 'app-game',
@@ -12,10 +11,12 @@ export class GameComponent implements OnInit {
 
   private player: HTMLElement;
 
+  private deviceorientationCallback: (event) => void;
+
   constructor() { }
 
   ngOnInit(): void {
-    window.addEventListener('deviceorientation', (event) => {
+    this.deviceorientationCallback = (event) => {
       this.motion = event;
       this.player = document.getElementById('player');
       this.player.style.top = this.clamp((event.beta + 50), 10, 90) + "vh";
@@ -24,7 +25,12 @@ export class GameComponent implements OnInit {
       console.log("left: " + this.player.style.left);
       //this.player.style.top = this.clamp((+this.player.style.top + event.beta), 10, 400) + "px";
       //this.player.style.left = this.clamp((+this.player.style.left + event.alpha), 10, 900) + "px";
-    });
+    }
+    window.addEventListener('deviceorientation', this.deviceorientationCallback);
+  }
+
+  ngOnDestroy(): void {
+    window.removeEventListener('deviceorientation', this.deviceorientationCallback);
   }
 
   clamp (n: number, min: number, max: number): number {
