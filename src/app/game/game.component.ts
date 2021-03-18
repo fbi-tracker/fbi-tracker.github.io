@@ -19,7 +19,7 @@ export class GameComponent implements OnInit {
       this.motion = event;
       this.player = document.getElementById('player');
       this.player.style.top = this.clamp((event.beta + 50), 10, 90) + "vh";
-      this.player.style.left = this.clamp((event.alpha + 50), 10, 90) + "vw";
+      this.player.style.left = this.clamp((event.gamma + 50), 10, 90) + "vw";
       console.log("top: " + this.player.style.top);
       console.log("left: " + this.player.style.left);
       //this.player.style.top = this.clamp((+this.player.style.top + event.beta), 10, 400) + "px";

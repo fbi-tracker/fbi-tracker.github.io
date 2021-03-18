@@ -1,9 +1,16 @@
 <h1>FBI Tracker</h1>
 <h2>Location</h2>
-<p>lat: {{ location.coords.latitude }}</p>
-<p>long: {{ location.coords.longitude }}</p>
+<div *ngIf="location && location.coords; else loading">
+  <p>lat: {{ location.coords.latitude }}</p>
+  <p>long: {{ location.coords.longitude }}</p>
+</div>
 
 <h2>Rotation</h2>
-<p>alpha: {{ motion.alpha }}</p>
-<p>beta: {{ motion.beta }}</p>
-<p>gamma: {{ motion.gamma }}</p>
+<div *ngIf="motion; else loading">
+  <p>alpha: {{ motion.alpha.toFixed(2) }}</p>
+  <p>beta: {{ motion.beta.toFixed(2) }}</p>
+  <p>gamma: {{ motion.gamma.toFixed(2) }}</p>
+</div>
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>
