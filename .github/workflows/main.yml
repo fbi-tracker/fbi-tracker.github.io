@@ -34,16 +34,21 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - run: npm install
-      - run: npm run build --if-present
-      #- run: npm test
+      - name: Build
+        - run: npm install
+        - run: npm run build --if-present
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Done
+      - name: Copy index.html as 404.html
+        uses: canastro/copy-file-action@master
+        with:
+          source: "dist/fbi-tracker/index.html"
+          target: "dist/fbi-tracker/404.html"
 
-      # Runs a set of commands using the runners shell
-      #- name: Run a multi-line script
-      #  run: |
-      #    echo Add other actions to build,
-      #    echo test, and deploy your project.
+
+      - name: Deploy
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: gh-pages
+          FOLDER: dist/fbi-tracker
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
